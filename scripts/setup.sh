@@ -1,20 +1,19 @@
 #!/bin/bash
 # Entry point for Claude Code cloud env setup.
-# Runs each enabled config from scripts/configs/<name>.sh in order.
-# Usage: setup.sh            # run all enabled configs
-#        setup.sh name ...   # run only the given configs
-
-# Enabled configs, in execution order. Comment out a line to disable it.
-CONFIGS=(
-  lucas-skills-plugin
-)
+# Runs each given config from scripts/configs/<name>.sh in order.
+# Usage: setup.sh name [name ...]
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_DIR="$SCRIPT_DIR/configs"
 
-[ "$#" -gt 0 ] && CONFIGS=("$@")
+if [ "$#" -eq 0 ]; then
+  echo "usage: $0 name [name ...]"
+  echo "available configs:"
+  for f in "$CONFIG_DIR"/*.sh; do [ -e "$f" ] && echo "  $(basename "$f" .sh)"; done
+  exit 0
+fi
 
-for name in "${CONFIGS[@]}"; do
+for name in "$@"; do
   script="$CONFIG_DIR/$name.sh"
   if [ ! -f "$script" ]; then
     echo "warn: config '$name' not found at $script"
