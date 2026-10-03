@@ -16,3 +16,19 @@ Init main
 
 - `lucas-skills-plugin`: installs the lucas-skills plugin (needs `SETUP_GITHUB_TOKEN`).
 - `skills-setup`: copies `lucas-segundo/skills` skills into `~/.claude/skills`, no plugin install.
+
+### Cloud envs
+
+`claude/cloud-envs/<name>.sh` is what a cloud environment runs. Paste this bootstrap in the environment's setup script; it never needs to change:
+
+```bash
+#!/bin/bash
+set -euo pipefail
+AI_DIR=/opt/lucas-ai
+if [ -d "$AI_DIR/.git" ]; then
+  git -C "$AI_DIR" pull --ff-only
+else
+  git clone --depth 1 https://github.com/lucas-segundo/ai "$AI_DIR"
+fi
+bash "$AI_DIR/claude/cloud-envs/default.sh"
+```
