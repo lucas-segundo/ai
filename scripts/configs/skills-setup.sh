@@ -3,7 +3,7 @@
 # Uses SETUP_GITHUB_TOKEN if set (private repo); otherwise relies on existing git auth.
 set -euo pipefail
 
-REPO="${SKILLS_REPO:-lucas-segundo/skills}"
+REPO=lucas-segundo/skills
 SRC="${SKILLS_SRC:-/home/user/skills}"
 DEST="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
 
