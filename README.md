@@ -16,7 +16,6 @@ Init main
 ### Configs
 
 - `lucas-skills-plugin`: installs the lucas-skills plugin.
-- `skills-setup`: copies `lucas-segundo/skills` skills into `~/.claude/skills`, no plugin install.
 
 ### Cloud envs
 
