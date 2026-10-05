@@ -1,6 +1,6 @@
 #!/bin/bash
 # Cloud env setup script: loads skills/* into ~/.claude/skills (no plugin install).
-# Uses SETUP_GITHUB_TOKEN if set (private repo); otherwise relies on existing git auth.
+# Uses SETUP_GITHUB_TOKEN if set; not needed for public repos.
 set -euo pipefail
 
 REPO=lucas-segundo/skills
