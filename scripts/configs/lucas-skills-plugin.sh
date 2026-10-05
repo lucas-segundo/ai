@@ -8,7 +8,7 @@ SKILLS_DIR=/home/user/skills
 if [ ! -d "$SKILLS_DIR/.git" ]; then
   git clone --depth 1 https://github.com/lucas-segundo/skills "$SKILLS_DIR"
 else
-  git -C "$SKILLS_DIR" pull --ff-only
+  git -C "$SKILLS_DIR" pull --ff-only || echo "warn: pull failed, using existing checkout"
 fi
 
 claude plugin marketplace add lucas-segundo/skills
