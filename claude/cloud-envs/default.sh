@@ -6,4 +6,4 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
-bash "$ROOT/scripts/setup.sh" skills-setup
+bash "$ROOT/scripts/setup.sh" lucas-skills-plugin
