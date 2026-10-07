@@ -16,6 +16,8 @@ Init main
 ### Configs
 
 - `lucas-skills-plugin`: installs the lucas-skills plugin.
+- `mattpocock-skills-plugin`: installs the mattpocock-skills plugin from
+  [mattpocock/skills](https://github.com/mattpocock/skills).
 
 ### Cloud envs
 
