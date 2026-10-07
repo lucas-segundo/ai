@@ -11,7 +11,7 @@ export SETUP_LOG="$LOG_FILE"
 # If setup fails, still let the session start: a failing env setup script blocks
 # the session, so there is no agent to ask what went wrong. Instead leave a
 # user-level CLAUDE.md that tells the agent to read the log and report.
-if ! bash "$ROOT/scripts/setup.sh" lucas-skills-plugin; then
+if ! bash "$ROOT/scripts/setup.sh" lucas-skills-plugin mattpocock-skills-plugin; then
   mkdir -p "$HOME/.claude"
   {
     echo "# Cloud env setup FAILED"
