@@ -26,4 +26,10 @@ if ! bash "$ROOT/scripts/setup.sh" lucas-skills-plugin mattpocock-skills-plugin;
   } >> "$HOME/.claude/CLAUDE.md"
   echo "warn: setup failed, wrote failure note to $HOME/.claude/CLAUDE.md" >&2
 fi
+
+# Cached marketplace/plugin copies go stale (new skills missing from sessions),
+# so refresh them. Best effort: never block the session over an update failure.
+claude plugin marketplace update >>"$LOG_FILE" 2>&1 || echo "warn: marketplace update failed" >&2
+claude plugin update lucas-skills@lucas-plugins >>"$LOG_FILE" 2>&1 || echo "warn: lucas-skills update failed" >&2
+
 exit 0
