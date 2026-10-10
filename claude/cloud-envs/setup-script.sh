@@ -3,11 +3,11 @@
 # Paste this file's contents into the environment's "Setup script" field; it
 # only fetches lucas-segundo/ai and runs claude/cloud-envs/default.sh, so it
 # never needs to change. Edit default.sh (and push) instead.
-# Set AI_BRANCH in the environment's variables to run another branch (default: main).
+# Change AI_BRANCH below to run another branch.
 set -euo pipefail
 
 AI_DIR=/opt/lucas-ai
-AI_BRANCH="${AI_BRANCH:-main}"
+AI_BRANCH=main # branch of lucas-segundo/ai to run
 REPO_URL=https://github.com/lucas-segundo/ai
 
 if [ -d "$AI_DIR/.git" ]; then

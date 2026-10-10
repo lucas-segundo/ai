@@ -25,5 +25,5 @@ Init main
 contents of [`claude/cloud-envs/setup-script.sh`](claude/cloud-envs/setup-script.sh)
 into the environment's setup script; it clones this repo to `/opt/lucas-ai` (or
 pulls it if already there) and runs `claude/cloud-envs/default.sh`, so it never
-needs to change. Set `AI_BRANCH` in the environment variables to run another
+needs to change. Change `AI_BRANCH` in the script to run another
 branch (default `main`).
