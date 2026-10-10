@@ -21,16 +21,8 @@ Init main
 
 ### Cloud envs
 
-`claude/cloud-envs/<name>.sh` is what a cloud environment runs. Paste this bootstrap in the environment's setup script; it never needs to change:
-
-```bash
-#!/bin/bash
-set -euo pipefail
-AI_DIR=/opt/lucas-ai
-if [ -d "$AI_DIR/.git" ]; then
-  git -C "$AI_DIR" pull --ff-only
-else
-  git clone --depth 1 https://github.com/lucas-segundo/ai "$AI_DIR"
-fi
-bash "$AI_DIR/claude/cloud-envs/default.sh"
-```
+`claude/cloud-envs/<name>.sh` is what a cloud environment runs. Paste the
+contents of [`claude/cloud-envs/setup-script.sh`](claude/cloud-envs/setup-script.sh)
+into the environment's setup script; it clones this repo to `/opt/lucas-ai` (or
+pulls it if already there) and runs `claude/cloud-envs/default.sh`, so it never
+needs to change.
