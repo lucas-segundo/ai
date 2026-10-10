@@ -34,3 +34,38 @@ else
 fi
 bash "$AI_DIR/claude/cloud-envs/default.sh"
 ```
+
+## Reusable workflows
+
+`.github/workflows/claude.yml` runs Claude Code when `@claude` is mentioned
+in an issue, PR comment or review. A repo uses it with a caller that keeps the
+triggers and grants the token permissions (the shared workflow can only narrow
+them):
+
+```yaml
+name: Claude Code
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  claude:
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+      id-token: write
+      actions: read
+    uses: lucas-segundo/ai/.github/workflows/claude.yml@main
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+```
+
+The calling repo needs the `CLAUDE_CODE_OAUTH_TOKEN` secret.
