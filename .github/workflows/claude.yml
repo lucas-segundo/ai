@@ -39,4 +39,4 @@ jobs:
             actions: read
           claude_args: |
             --allowed-tools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr review:*),Bash(gh api:*)"
-            --append-system-prompt "When asked to review a pull request, use the pr-code-review skill."
+            --append-system-prompt "Always use the pr-code-review skill (Skill tool) for any pull request work: reviews, questions about a diff, and follow-ups. Every question, should-fix and should-check item MUST be posted as an inline review comment anchored to the exact line or line range it concerns (mcp__github_inline_comment__create_inline_comment, or a pending review via gh api). Never put such items only in a general PR comment or the chat reply."
